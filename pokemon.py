@@ -129,11 +129,6 @@ class Lodo(ataque_Behavior):
         print("¡Uso Lodo !")
         opponent.reduce_health(10)
 
-class Hipercolmillo(ataque_Behavior):
-    def attack(self,opponent):
-        print("¡Usó Hipercolmillo !")
-        opponent.reduce_health(10)
-
 class Golpe_cabeza (ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó golpe Cabeza!")
@@ -159,13 +154,10 @@ class Infortunio(ataque_Behavior):
         print("¡Usó Infortunio !")
         opponent.reduce_health(10)
         
-class (ataque_Behavior):
+"""class (ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó  !")
-        opponent.reduce_health(10)  
-
-
-
+        opponent.reduce_health(10)  """
 
 #Clase base de pokemons
         
@@ -183,13 +175,52 @@ class Pokemon:
         self.health -= cantidad
         print(f"{self.name} ha perdido {cantidad} puntos de salud. Salud restante: {self.salud}")
 
-class Charmander(Pokemon):
-    def __init__(self):
-        super().__init__("Charmander", 100, Ember())
 
+#Clases de pokemons
+        
 class Pikachu(Pokemon):
     def __init__(self):
         super().__init__("Pikachu",100 , ataque_Behavior)
+
+class Caterpie(Pokemon):
+    def __init__(self):
+        super().__init__("Caterpie",0 , ataque_Behavior)
+
+class Pidgeotto(Pokemon):
+    def __init__(self):
+        super().__init__("Pidgeotto",0 , ataque_Behavior)
+
+class Bulbasaur(Pokemon):
+    def __init__(self):
+        super().__init__("Bulbasaur",0 , ataque_Behavior)
+        
+class Charmander(Pokemon):
+    def __init__(self):
+        super().__init__("Charmander", 100, ataque_Behavior )   
+
+class Squirtle(Pokemon):
+    def __init__(self):
+        super().__init__("Squirtle",0 , ataque_Behavior)
+
+class Krabby(Pokemon):
+    def __init__(self):
+        super().__init__("Krabby",0 , ataque_Behavior)
+
+class Raticate(Pokemon):
+    def __init__(self):
+        super().__init__("Raticate",0 , ataque_Behavior)
+        
+class Muk(Pokemon):
+    def __init__(self):
+        super().__init__("Muk",0 , ataque_Behavior) 
+
+class Kingler(Pokemon):
+    def __init__(self):
+        super().__init__("Kingler",0 , ataque_Behavior) 
+
+"""class (Pokemon):
+    def __init__(self):
+        super().__init__("",0 , ataque_Behavior) """
     
 
 
