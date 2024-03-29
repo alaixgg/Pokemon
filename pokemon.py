@@ -166,17 +166,17 @@ class Pokemon:
     def __init__(self, nombre, salud, ataque_Behavior):
         self.nombre = nombre
         self.salud = salud
-        self.ataque_Behavior = ataque_Behavior
+        self.ataque = ataque_Behavior
 
     def attack(self, ataque, opponent):    
-        if ataque in self.ataques:
+        if ataque in self.ataque:
             self.ataques[ataque].attack(opponent)
         else:
             print(f"{self.nombre} no conoce el ataque {ataque}.")
 
     def reduce_health(self, cantidad):
         self.health -= cantidad
-        print(f"{self.name} ha perdido {cantidad} puntos de salud. Salud restante: {self.salud}")
+        print(f"{self.nombre} ha perdido {cantidad} puntos de salud. Salud restante: {self.salud}")
 
 
 #Clases de pokemons
@@ -286,7 +286,68 @@ class Kingler(Pokemon):
     def __init__(self):
         super().__init__("",0 , ataque_Behavior) """
     
+#Creacion de las batallas
 
+class Batalla(Pokemon, Ataque_Behavior):
+    contador = 0
+    pokemones_seleccionados = []
+
+    while contador <= 3:
+        def elegir_pokemon():
+            print("Elige un Pokémon:")
+            print("1. Pikachu")
+            print("2. Caterpie")
+            print("3. Pidgeotto")
+            print("4. Bulbasaur")
+            print("5. Charmander")
+            print("6. Squirtle")
+            print("7. Krabby")
+            print("8. Raticate")
+            print("9. Muk")
+            print("10. Kingler")
+            eleccion_pokemon = input("Ingresa el número correspondiente al Pokémon: ")
+
+            if eleccion_pokemon == "1":
+                return Pikachu()
+            elif eleccion_pokemon == "2":
+                return Caterpie()
+            elif eleccion_pokemon == "3":
+                return Pidgeotto()
+            elif eleccion_pokemon == "4":
+                return Bulbasaur()
+            elif eleccion_pokemon == "5":
+                return Charmander()
+            elif eleccion_pokemon == "6":
+                return Squirtle()
+            elif eleccion_pokemon == "7":
+                return Krabby()
+            elif eleccion_pokemon == "8":
+                return Raticate()
+            elif eleccion_pokemon == "9":
+                return Muk()
+            elif eleccion_pokemon == "10":
+                return Kingler()
+            else:
+                print("Opción no válida. Por favor, elige un número del 1 al 10.")
+
+        pokemon_seleccionado = elegir_pokemon()
+        pokemones_seleccionados.append(pokemon_seleccionado)
+        contador += 1
+
+    # Aquí puedes usar la matriz pokemones_seleccionados
+
+
+
+# Ejemplo de uso
+opcion_elegida = elegir_pokemon()
+print("Has elegido el Pokémon número", opcion_elegida)
+
+     def elegir_ataque(self, ataque, oponente):
+        if ataque in self.ataques:
+            print(f"{self.nombre} usa {ataque}")
+            self.ataques[ataque].attack(oponente)
+        else:
+            print("Ataque no válido")
 
 
 if __name__ == "__main__":
