@@ -1,4 +1,5 @@
 import random
+import time 
 
 class ataque_Behavior:
     def attack(self, opponent):
@@ -362,19 +363,34 @@ class Dos_Jugadores:
 
 
 class Maquina:
-    def __init__(self):
-        self.nombre = "Máquina"
-        self.pokemon = None
+   def __init__(self):
+        self.pokemon_seleccionados_jugador1 = []
+        self.pokemon_seleccionados_Maquina = []
 
-    def seleccionar_pokemon(self):
-            J1 = seleccionar_pokemon()
-            self.pokemon = random.choice(seleccionar_pokemon)
-
+   def seleccionar_pokemon(self):
+        print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
+        pokemonsJugador1 = []
+        contador = 0
+        while contador < 3:
+            pokemon_seleccionado = seleccionar_pokemon()
+            pokemonsJugador1.append(pokemon_seleccionado)
+            contador += 1
+        self.pokemon_seleccionados_jugador1 = pokemonsJugador1
+        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
         
+        print("¡Botsito Rocket, es tu turno de seleccionar tus Pokémones!")
+        pokemonsMaquina = []
+        contador = 0
+        time.sleep(1)
+        print("Botsito Rocket, esta ecogiendo sus pokemons...")
+        while contador < 3:
+            pokemon_seleccionado = random.choice(seleccionar_pokemon)  # Reemplaza lista_de_pokemones con tu lista de Pokémon disponible
+            pokemonsMaquina.append(pokemon_seleccionado)
+            contador += 1
+        self.pokemon_seleccionados_maquina = pokemonsMaquina
+        time.sleep(2)
+        print("El Botsito Rocket ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_maquina)
 
-    def elegir_ataque(self):
-        # Lógica para que la máquina seleccione un ataque
-        pass
 
 #Funcion de seleccion del modo de juego
     
@@ -396,15 +412,8 @@ class Batalla(Pokemon):
     seleccionar_modo_juego()
     pass
     
-    #inic
+ 
     
-
-
-    # Aquí puedes usar la matriz pokemones_seleccionados
-
-
-
-# Ejemplo de uso
 
 
 
