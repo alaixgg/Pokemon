@@ -1,3 +1,4 @@
+import random
 
 class ataque_Behavior:
     def attack(self, opponent):
@@ -44,10 +45,6 @@ class Ascuas(ataque_Behavior):
         print("¡Usó Ascuas!")
         opponent.reduce_health(10)
 
-class Placaje(ataque_Behavior):
-    def attack(self,opponent):
-        print("¡Usó placaje !")
-        opponent.reduce_health(10)
 
 class Burbuja(ataque_Behavior):
     def attack(self,opponent):
@@ -170,12 +167,12 @@ class Pokemon:
 
     def attack(self, ataque, opponent):    
         if ataque in self.ataque:
-            self.ataques[ataque].attack(opponent)
+            self.ataque[ataque].attack(opponent)
         else:
             print(f"{self.nombre} no conoce el ataque {ataque}.")
 
-    def reduce_health(self, cantidad):
-        self.health -= cantidad
+    def reduce_salud(self, cantidad):
+        self.salud -= cantidad
         print(f"{self.nombre} ha perdido {cantidad} puntos de salud. Salud restante: {self.salud}")
 
 
@@ -285,10 +282,9 @@ class Kingler(Pokemon):
 """class (Pokemon):
     def __init__(self):
         super().__init__("",0 , ataque_Behavior) """
-    
-#Creacion de las batallas
 
-class Batalla(Pokemon, Ataque_Behavior):
+#     
+def seleccionar_pokemon():
     contador = 0
     pokemones_seleccionados = []
 
@@ -334,21 +330,85 @@ class Batalla(Pokemon, Ataque_Behavior):
         pokemones_seleccionados.append(pokemon_seleccionado)
         contador += 1
 
+#Jugador & Maquina
+class Dos_Jugadores:
+    def __init__(self):
+        self.pokemon_seleccionados_jugador1 = []
+        self.pokemon_seleccionados_jugador2 = []
+
+    def seleccionar_pokemon(self):
+        print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
+        pokemonsJugador1 = []
+        contador = 0
+        while contador < 3:
+            pokemon_seleccionado = seleccionar_pokemon()
+            pokemonsJugador1.append(pokemon_seleccionado)
+            contador += 1
+        self.pokemon_seleccionados_jugador1 = pokemonsJugador1
+        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
+
+        print("¡Ahora tu, entrenador 2, es tu turno de seleccionar tus Pokémones!")
+        pokemonsJugador2 = []
+        contador = 0
+        while contador < 3:
+            pokemon_seleccionado = seleccionar_pokemon()
+            pokemonsJugador2.append(pokemon_seleccionado)
+            contador += 1
+        self.pokemon_seleccionados_jugador2 = pokemonsJugador2
+        
+
+        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
+        print("El Entrenador 2 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador2)
+
+
+class Maquina:
+    def __init__(self):
+        self.nombre = "Máquina"
+        self.pokemon = None
+
+    def seleccionar_pokemon(self):
+            J1 = seleccionar_pokemon()
+            self.pokemon = random.choice(seleccionar_pokemon)
+
+        
+
+    def elegir_ataque(self):
+        # Lógica para que la máquina seleccione un ataque
+        pass
+
+#Funcion de seleccion del modo de juego
+    
+def seleccionar_modo_juego():
+    eleccion_modo_juego = input("SELECCIONE EL MODO DE JUEGO\n1. 2 Jugadores\n2. Jugar contra un Botsito\n")
+    if eleccion_modo_juego == "1":
+        return Dos_Jugadores()
+    elif eleccion_modo_juego == "2":
+        return Maquina()
+    else:
+        print("Elija un modo de juego válido.")
+        return seleccionar_modo_juego()
+    
+#Creacion de las batallas
+
+class Batalla(Pokemon):
+    seleccionar_pokemon()
+    
+    seleccionar_modo_juego()
+    pass
+    
+    #inic
+    
+
+
     # Aquí puedes usar la matriz pokemones_seleccionados
 
 
 
 # Ejemplo de uso
-opcion_elegida = elegir_pokemon()
-print("Has elegido el Pokémon número", opcion_elegida)
 
-     def elegir_ataque(self, ataque, oponente):
-        if ataque in self.ataques:
-            print(f"{self.nombre} usa {ataque}")
-            self.ataques[ataque].attack(oponente)
-        else:
-            print("Ataque no válido")
 
 
 if __name__ == "__main__":
+    seleccionar_pokemon()
+   # seleccionar_modo_juego()
     pass

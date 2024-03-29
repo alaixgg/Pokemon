@@ -1,3 +1,4 @@
+#Voy a desechar este codigo probablemente, estoy reciclando partes que me puedan servir
 class ICharacter:
     def ataque(self):
         pass
@@ -30,7 +31,7 @@ class Pikachu(ICharacter):
     def mostrar_salud(self):
         print(f"Salud: {self.salud}")
 
-class Charmander(ICharacter):
+class Caterpie(ICharacter):
     def __init__(self):
         self.salud = 165
 
@@ -46,9 +47,41 @@ class Charmander(ICharacter):
     def mostrar_salud(self):
         print(f"Salud: {self.salud}")
 
-class Bulbasaur(ICharacter):
+class Pidgeotto(ICharacter):
     def __init__(self):
         self.salud = 160
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+class Bulbasaur(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+class Charmander(ICharacter):
+    def __init__(self):
+        self.salud = 155
 
     def ataque(self):
         print("")
@@ -78,6 +111,89 @@ class Squirtle(ICharacter):
     def mostrar_salud(self):
         print(f"Salud: {self.salud}")
 
+class Squirtle(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+class Krabby(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+class Rapicate(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+class Muk(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+    
+class Kingler(ICharacter):
+    def __init__(self):
+        self.salud = 155
+
+    def ataque(self):
+        print("")
+
+    def super(self):
+        print("")
+
+    def movimiento(self):
+        print("")
+
+    def mostrar_salud(self):
+        print(f"Salud: {self.salud}")
+
+
+
+
 
 class Player:
     def __init__(self, pokemon: ICharacter) -> None:
@@ -102,7 +218,7 @@ def Batalla(self, ataque, super, movimiento, salud):
     player1 = Player(pikachu)
     player2 = Player(charmander)
 
-    while pikachu.salud > 0 and charmander.salud > 0:
+    while pikachu.salud >= 0 and charmander.salud > 0:
         print("Turno de jugador 1")
         player1.mostrar_salud()
         opcion = int(input("Elige una opción (1: Atacar, 2: Super, 3: Movimiento): "))
