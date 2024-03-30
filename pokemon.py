@@ -2,7 +2,7 @@ import random
 import time 
 
 class ataque_Behavior:
-    def attack(self, opponent):
+    def attack(self):
         pass
 #Se implementan las clases de los ataques
         
@@ -181,13 +181,14 @@ class Pokemon:
         
 class Pikachu(Pokemon):
     def __init__(self):
-        super().__init__("Pikachu", 100)
+        super().__init__("Pikachu", 100)  # Se pasa el nombre y la salud
         self.ataques = {
             "Impactrueno": Impactrueno(),
             "Rayo": Rayo(),
             "Ataque Rápido": Ataque_Rapido(),
             "Placaje": Placaje()
         }
+
 
 class Caterpie(Pokemon):
     def __init__(self):
@@ -286,10 +287,9 @@ class Kingler(Pokemon):
 
 #     
 def seleccionar_pokemon():
-    contador = 0
     pokemones_seleccionados = []
 
-    while contador <= 3:
+    while len(pokemones_seleccionados) < 3:
         def elegir_pokemon():
             print("Elige un Pokémon:")
             print("1. Pikachu")
@@ -302,7 +302,7 @@ def seleccionar_pokemon():
             print("8. Raticate")
             print("9. Muk")
             print("10. Kingler")
-            eleccion_pokemon = input("Ingresa el número correspondiente al Pokémon: ")
+            eleccion_pokemon = input("Ingresa un Pokémon: ")
 
             if eleccion_pokemon == "1":
                 return Pikachu()
@@ -327,9 +327,7 @@ def seleccionar_pokemon():
             else:
                 print("Opción no válida. Por favor, elige un número del 1 al 10.")
 
-        pokemon_seleccionado = elegir_pokemon()
-        pokemones_seleccionados.append(pokemon_seleccionado)
-        contador += 1
+        return pokemones_seleccionados
 
 #Jugador & Maquina
 class Dos_Jugadores:
@@ -360,64 +358,89 @@ class Dos_Jugadores:
 
         print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
         print("El Entrenador 2 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador2)
-
+    
+    def ejecutar(self):
+        pass
 
 class Maquina:
    def __init__(self):
         self.pokemon_seleccionados_jugador1 = []
-        self.pokemon_seleccionados_Maquina = []
+        self.pokemon_seleccionados_maquina = []
 
    def seleccionar_pokemon(self):
-        print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
-        pokemonsJugador1 = []
-        contador = 0
-        while contador < 3:
-            pokemon_seleccionado = seleccionar_pokemon()
-            pokemonsJugador1.append(pokemon_seleccionado)
-            contador += 1
-        self.pokemon_seleccionados_jugador1 = pokemonsJugador1
-        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
+        print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
+        self.pokemon_seleccionados_jugador1 = seleccionar_pokemon()
+        print("Entrenador has elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])
         
         print("¡Botsito Rocket, es tu turno de seleccionar tus Pokémones!")
-        pokemonsMaquina = []
-        contador = 0
+        self.pokemon_seleccionados_maquina = []
         time.sleep(1)
-        print("Botsito Rocket, esta ecogiendo sus pokemons...")
-        while contador < 3:
-            pokemon_seleccionado = random.choice(seleccionar_pokemon)  # Reemplaza lista_de_pokemones con tu lista de Pokémon disponible
-            pokemonsMaquina.append(pokemon_seleccionado)
-            contador += 1
-        self.pokemon_seleccionados_maquina = pokemonsMaquina
+        print("Botsito Rocket, está escogiendo sus pokemones...")
+        while len(self.pokemon_seleccionados_maquina) < 3:
+            pokemon_seleccionado = random.choice([Pikachu(), Squirtle(), Bulbasaur(), Charmander(), Caterpie(), Pidgeotto(), Krabby(), Raticate(), Muk(), Kingler()])
+            self.pokemon_seleccionados_maquina.append(pokemon_seleccionado)
         time.sleep(2)
-        print("El Botsito Rocket ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_maquina)
+        print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_maquina])
+
+   def ejecutar(self):
+        print("Modo de juego: Jugar contra un Botsito")
+        print("¡Comienza el juego!")
+        # Ejemplo de lógica de juego contra la máquina
+        while not self.hay_ganador():
+            # Lógica del turno del jugador
+            self.turno_jugador()
+            if self.hay_ganador():
+                break
+            # Lógica del turno de la máquina
+            self.turno_maquina()
+        # Mostrar al ganador
+        print("¡Fin del juego!")
+
+   def turno_jugador(self):
+        # Lógica del turno del jugador
+        print("¡Es tu turno!")
+        # Aquí deberías implementar la lógica del turno, como seleccionar un ataque, realizar el ataque, etc.
+
+   def turno_maquina(self):
+        # Lógica del turno de la máquina
+        print("Turno de la máquina")
+        # Aquí deberías implementar la lógica del turno de la máquina, como seleccionar un ataque aleatorio, realizar el ataque, etc.
+
+   def hay_ganador(self):
+        # Lógica para determinar si hay un ganador
+        # Por ejemplo, si alguno de los jugadores se queda sin Pokémon, el otro jugador es el ganador
+        return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0
 
 
-#Funcion de seleccion del modo de juego
-    
-def seleccionar_modo_juego():
-    eleccion_modo_juego = input("SELECCIONE EL MODO DE JUEGO\n1. 2 Jugadores\n2. Jugar contra un Botsito\n")
-    if eleccion_modo_juego == "1":
-        return Dos_Jugadores()
-    elif eleccion_modo_juego == "2":
-        return Maquina()
-    else:
-        print("Elija un modo de juego válido.")
-        return seleccionar_modo_juego()
-    
+    #Funcion de seleccion del modo de juego
+class juego:
+    def __init__(self):
+        self.modo_juego = None
+
+    def seleccionar_modo_juego(self):
+        eleccion_modo_juego = input("SELECCIONE EL MODO DE JUEGO\n1. 2 Jugadores\n2. Jugar contra un Botsito\n")
+        if eleccion_modo_juego == "1":
+            self.modo_juego = Dos_Jugadores()
+        elif eleccion_modo_juego == "2":
+            self.modo_juego = Maquina()
+        else:
+            print("Elija un modo de juego válido.")
+        
+        if self.modo_juego:
+            self.modo_juego.ejecutar()
+
+            
 #Creacion de las batallas
 
 class Batalla(Pokemon):
-    seleccionar_pokemon()
-    
-    seleccionar_modo_juego()
-    pass
-    
- 
-    
+     def __init__(self):
+        self.pokemon_seleccionados_jugador1 = []
+        self.pokemon_seleccionados_jugador2 = []
 
-
-
+    
 if __name__ == "__main__":
-    seleccionar_pokemon()
-   # seleccionar_modo_juego()
+    
+    juego = juego()
+    juego.seleccionar_modo_juego()
+    
     pass
