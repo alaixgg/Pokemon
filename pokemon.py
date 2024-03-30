@@ -181,7 +181,7 @@ class Pokemon:
         
 class Pikachu(Pokemon):
     def __init__(self):
-        super().__init__("Pikachu", 100)  # Se pasa el nombre y la salud
+        super().__init__("Pikachu", 100, ataque_Behavior())  
         self.ataques = {
             "Impactrueno": Impactrueno(),
             "Rayo": Rayo(),
@@ -189,10 +189,9 @@ class Pikachu(Pokemon):
             "Placaje": Placaje()
         }
 
-
 class Caterpie(Pokemon):
     def __init__(self):
-        super().__init__("Caterpie", 100)
+        super().__init__("Caterpie", 100, ataque_Behavior())
         self.ataques = {
             "Placaje": Placaje(),
             "Tacleada": Tacleada(),
@@ -202,7 +201,7 @@ class Caterpie(Pokemon):
 
 class Pidgeotto(Pokemon):
     def __init__(self):
-        super().__init__("Pidgeotto", 100)
+        super().__init__("Pidgeotto", 100, ataque_Behavior())
         self.ataques = {
             "Picotazo": Picotazo(),
             "Remolino": Remolino(),
@@ -210,10 +209,11 @@ class Pidgeotto(Pokemon):
             "Ataque Rápido": Ataque_Rapido()
         }
 
+# Repite el mismo patrón para el resto de las clases de Pokémon...
 
 class Bulbasaur(Pokemon):
     def __init__(self):
-        super().__init__("Bulbasaur", 100)
+        super().__init__("Bulbasaur", 100, ataque_Behavior())
         self.ataques = {
             "Látigo Cepa": Latigo_Cepa(),
             "Drenadoras": Drenadoras(),
@@ -223,7 +223,7 @@ class Bulbasaur(Pokemon):
 
 class Charmander(Pokemon):
     def __init__(self):
-        super().__init__("Charmander", 100)
+        super().__init__("Charmander", 100, ataque_Behavior())
         self.ataques = {
             "Lanzallamas": Lanzallamas(),
             "Gruñido": Gruñido(),
@@ -233,7 +233,7 @@ class Charmander(Pokemon):
 
 class Squirtle(Pokemon):
     def __init__(self):
-        super().__init__("Squirtle", 100)
+        super().__init__("Squirtle", 100, ataque_Behavior())
         self.ataques = {
             "Pistola Agua": Pistola_agua(),
             "Burbuja": Burbuja(),
@@ -243,7 +243,7 @@ class Squirtle(Pokemon):
 
 class Krabby(Pokemon):
     def __init__(self):
-        super().__init__("Krabby", 100)
+        super().__init__("Krabby", 100, ataque_Behavior())
         self.ataques = {
             "Burbuja": Burbuja(),
             "Rayo Burbuja": Rayo_Burbuja(),
@@ -253,7 +253,7 @@ class Krabby(Pokemon):
 
 class Raticate(Pokemon):
     def __init__(self):
-        super().__init__("Raticate", 100)
+        super().__init__("Raticate", 100, ataque_Behavior())
         self.ataques = {
             "Hipercolmillo": Hipercolmillo(),
             "Ataque Rápido": Ataque_Rapido(),
@@ -263,7 +263,7 @@ class Raticate(Pokemon):
 
 class Muk(Pokemon):
     def __init__(self):
-        super().__init__("Muk", 100)
+        super().__init__("Muk", 100, ataque_Behavior)
         self.ataques = {
             "Lodo": Lodo(),
             "Bomba Lodo": Bomba_lodo(),
@@ -273,7 +273,7 @@ class Muk(Pokemon):
 
 class Kingler(Pokemon):
     def __init__(self):
-        super().__init__("Kingler", 100)
+        super().__init__("Kingler", 100, ataque_Behavior)
         self.ataques = {
             "Hidropulso": Hidropulso(),
             "Rayo Burbuja": Rayo_Burbuja(),
@@ -288,46 +288,43 @@ class Kingler(Pokemon):
 #     
 def seleccionar_pokemon():
     pokemones_seleccionados = []
+    print("Elige un Pokémon:")
+    print("1. Pikachu")
+    print("2. Caterpie")
+    print("3. Pidgeotto")
+    print("4. Bulbasaur")
+    print("5. Charmander")
+    print("6. Squirtle")
+    print("7. Krabby")
+    print("8. Raticate")
+    print("9. Muk")
+    print("10. Kingler")
+    eleccion_pokemon = input("Ingresa un Pokémon: ")
 
-    while len(pokemones_seleccionados) < 3:
-        def elegir_pokemon():
-            print("Elige un Pokémon:")
-            print("1. Pikachu")
-            print("2. Caterpie")
-            print("3. Pidgeotto")
-            print("4. Bulbasaur")
-            print("5. Charmander")
-            print("6. Squirtle")
-            print("7. Krabby")
-            print("8. Raticate")
-            print("9. Muk")
-            print("10. Kingler")
-            eleccion_pokemon = input("Ingresa un Pokémon: ")
+    if eleccion_pokemon == "1":
+        return Pikachu()
+    elif eleccion_pokemon == "2":
+        return Caterpie()
+    elif eleccion_pokemon == "3":
+        return Pidgeotto()
+    elif eleccion_pokemon == "4":
+        return Bulbasaur()
+    elif eleccion_pokemon == "5":
+        return Charmander()
+    elif eleccion_pokemon == "6":
+        return Squirtle()
+    elif eleccion_pokemon == "7":
+        return Krabby()
+    elif eleccion_pokemon == "8":
+        return Raticate()
+    elif eleccion_pokemon == "9":
+        return Muk()
+    elif eleccion_pokemon == "10":
+        return Kingler()
+    else:
+        print("Opción no válida. Por favor, elige un número del 1 al 10.")
 
-            if eleccion_pokemon == "1":
-                return Pikachu()
-            elif eleccion_pokemon == "2":
-                return Caterpie()
-            elif eleccion_pokemon == "3":
-                return Pidgeotto()
-            elif eleccion_pokemon == "4":
-                return Bulbasaur()
-            elif eleccion_pokemon == "5":
-                return Charmander()
-            elif eleccion_pokemon == "6":
-                return Squirtle()
-            elif eleccion_pokemon == "7":
-                return Krabby()
-            elif eleccion_pokemon == "8":
-                return Raticate()
-            elif eleccion_pokemon == "9":
-                return Muk()
-            elif eleccion_pokemon == "10":
-                return Kingler()
-            else:
-                print("Opción no válida. Por favor, elige un número del 1 al 10.")
-
-        return pokemones_seleccionados
+    return pokemones_seleccionados
 
 #Jugador & Maquina
 class Dos_Jugadores:
@@ -335,7 +332,7 @@ class Dos_Jugadores:
         self.pokemon_seleccionados_jugador1 = []
         self.pokemon_seleccionados_jugador2 = []
 
-    def seleccionar_pokemon(self):
+    def seleccionar_pokemon2(self):
         print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
         pokemonsJugador1 = []
         contador = 0
@@ -349,7 +346,7 @@ class Dos_Jugadores:
         print("¡Ahora tu, entrenador 2, es tu turno de seleccionar tus Pokémones!")
         pokemonsJugador2 = []
         contador = 0
-        while contador < 3:
+        while contador == 3:
             pokemon_seleccionado = seleccionar_pokemon()
             pokemonsJugador2.append(pokemon_seleccionado)
             contador += 1
@@ -367,10 +364,15 @@ class Maquina:
         self.pokemon_seleccionados_jugador1 = []
         self.pokemon_seleccionados_maquina = []
 
-   def seleccionar_pokemon(self):
         print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
-        self.pokemon_seleccionados_jugador1 = seleccionar_pokemon()
-        print("Entrenador has elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])
+        self.pokemon_seleccionados_jugador1 = []
+        contador = 0
+        while contador != 3:
+            contador +=1
+            pokemon_seleccionado = seleccionar_pokemon()
+            self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+        print("El entrenador ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])   
+
         
         print("¡Botsito Rocket, es tu turno de seleccionar tus Pokémones!")
         self.pokemon_seleccionados_maquina = []
@@ -380,8 +382,9 @@ class Maquina:
             pokemon_seleccionado = random.choice([Pikachu(), Squirtle(), Bulbasaur(), Charmander(), Caterpie(), Pidgeotto(), Krabby(), Raticate(), Muk(), Kingler()])
             self.pokemon_seleccionados_maquina.append(pokemon_seleccionado)
         time.sleep(2)
-        print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_maquina])
-
+        print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_maquina])   
+        
+    
    def ejecutar(self):
         print("Modo de juego: Jugar contra un Botsito")
         print("¡Comienza el juego!")
@@ -427,6 +430,7 @@ class juego:
             print("Elija un modo de juego válido.")
         
         if self.modo_juego:
+            self.modo_juego.seleccionar_pokemon()
             self.modo_juego.ejecutar()
 
             
