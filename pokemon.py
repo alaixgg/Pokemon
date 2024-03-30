@@ -337,26 +337,86 @@ class Dos_Jugadores:
         #Eleccion de Pokemons
         print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
         self.pokemon_seleccionados_jugador1 = []
-        contador = 0
-        while contador != 3:
-            contador +=1
-            pokemon_seleccionado = seleccionar_pokemon()
-            self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
-        print("El entrenador 1 ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])
-
-        print("¡Entrenador 2, es tu turno de seleccionar tus Pokémones!")
-        self.pokemon_seleccionados_jugador2 = []
-        contador = 0
-        while contador != 3:
-            contador +=1
-            pokemon_seleccionado = seleccionar_pokemon()
-            self.pokemon_seleccionados_jugador2.append(pokemon_seleccionado)
-        print("El entrenador 2 ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador2])   
    
+        pok_aleatorio= input("Deseas  \n1. Tener un equipo aleatorios \n2.Elige tus pokemons, por tu cuenta\n")
+        if pok_aleatorio == '1':
+            print("¡Botsito Rocket, va elegir tus pokemones de manera aleatoria!")
+            self.pokemon_seleccionados_jugador1 = []
+            time.sleep(1)
+            print("Botsito Rocket, está escogiendo los pokemones...")
+            while len(self.pokemon_seleccionados_jugador1) < 3:
+              pokemon_seleccionado = random.choice([Pikachu(), Squirtle(), Bulbasaur(), Charmander(), Caterpie(), Pidgeotto(), Krabby(), Raticate(), Muk(), Kingler()])
+              self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+              time.sleep(2)
+            print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1]) 
+
+        elif pok_aleatorio == '2':
+            print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
+            self.pokemon_seleccionados_jugador1 = []
+            contador = 0
+            while contador != 3:
+                 contador +=1
+                 pokemon_seleccionado = seleccionar_pokemon()
+                 self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+            print("El entrenador ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1]) 
+        else: 
+            print("Eliga una opcion valida! ")
+
+
+
+        time.sleep(1)
+        print("¡Entrenador 2, es tu turno de seleccionar tus Pokémones!")
+          
+        pok_aleatorio= input("Deseas  \n1. Tener un equipo aleatorios \n2.Elige tus pokemons, por tu cuenta\n")
+        if pok_aleatorio == '1':
+            print("¡Botsito Rocket, va elegir tus pokemones de manera aleatoria!")
+            self.pokemon_seleccionados_jugador2 = []
+            time.sleep(1)
+            print("Botsito Rocket, está escogiendo los pokemones...")
+            while len(self.pokemon_seleccionados_jugador2) < 3:
+              pokemon_seleccionado = random.choice([Pikachu(), Squirtle(), Bulbasaur(), Charmander(), Caterpie(), Pidgeotto(), Krabby(), Raticate(), Muk(), Kingler()])
+              self.pokemon_seleccionados_jugador2.append(pokemon_seleccionado)
+              time.sleep(2)
+            print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador2]) 
+
+        elif pok_aleatorio == '2':
+            print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
+            self.pokemon_seleccionados_jugador2 = []
+            contador = 0
+            while contador != 3:
+                 contador +=1
+                 pokemon_seleccionado = seleccionar_pokemon()
+                 self.pokemon_seleccionados_jugador2.append(pokemon_seleccionado)
+            print("El entrenador ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador2]) 
+        else: 
+            print("Eliga una opcion valida! ")
 
     
     def ejecutar(self):
-        pass
+        print("¡Comienza el juego!")
+        while not self.hay_ganador():
+            self.turno_jugador()
+            if self.hay_ganador():
+                break
+            self.turno_maquina()
+        print("¡Fin del juego!")
+
+    def turno_jugador1(self):
+        
+        print("¡Es tu turno!")
+
+        # Aquí deberías implementar la lógica del turno, como seleccionar un ataque, realizar el ataque, etc.
+
+    def turno_maquina2(self):
+        # Lógica del turno de la máquina
+        print("Turno de la máquina")
+        # Aquí deberías implementar la lógica del turno de la máquina, como seleccionar un ataque aleatorio, realizar el ataque, etc.
+
+    def hay_ganador(self):
+        # Lógica para determinar si hay un ganador
+        # Por ejemplo, si alguno de los jugadores se queda sin Pokémon, el otro jugador es el ganador
+        return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0
+
 
 class Maquina:
    def __init__(self):
@@ -366,17 +426,33 @@ class Maquina:
         print("***MODO DE JUEGO:*** \nJugar contra un Botsito\n\n")
 
         #Eleccion de Pokemons
-        print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
-        self.pokemon_seleccionados_jugador1 = []
-        contador = 0
-        while contador != 3:
-            contador +=1
-            pokemon_seleccionado = seleccionar_pokemon()
-            self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
-        print("El entrenador ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])   
+   
+        pok_aleatorio= input("Deseas  \n1. Tener un equipo aleatorios \n2.Elige tus pokemons, por tu cuenta")
+        if pok_aleatorio == '1':
+            print("¡Botsito Rocket, va elegir tus pokemones de manera aleatoria!")
+            self.pokemon_seleccionados_maquina = []
+            time.sleep(1)
+            print("Botsito Rocket, está escogiendo los pokemones...")
+            while len(self.pokemon_seleccionados_jugador1) < 3:
+              pokemon_seleccionado = random.choice([Pikachu(), Squirtle(), Bulbasaur(), Charmander(), Caterpie(), Pidgeotto(), Krabby(), Raticate(), Muk(), Kingler()])
+              self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+              time.sleep(2)
+            print("El Botsito Rocket ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1]) 
 
-        
-        print("¡Botsito Rocket, es tu turno de seleccionar tus Pokémones!")
+        elif pok_aleatorio == '2':
+            print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
+            self.pokemon_seleccionados_jugador1 = []
+            contador = 0
+            while contador != 3:
+                 contador +=1
+                 pokemon_seleccionado = seleccionar_pokemon()
+                 self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+            print("El entrenador ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1]) 
+        else: 
+            print("Eliga una opcion valida! ")  
+
+        time.sleep(1)
+        print("\n\n¡Botsito Rocket, es tu turno de seleccionar tus Pokémones!")
         self.pokemon_seleccionados_maquina = []
         time.sleep(1)
         print("Botsito Rocket, está escogiendo sus pokemones...")
@@ -429,6 +505,9 @@ class juego:
         if self.modo_juego:
             self.modo_juego.seleccionar_pokemon()
             self.modo_juego.ejecutar()
+    
+   
+
 
             
 #Creacion de las batallas
