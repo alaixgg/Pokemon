@@ -164,11 +164,11 @@ class Pokemon:
     def __init__(self, nombre, salud, ataque_Behavior):
         self.nombre = nombre
         self.salud = salud
-        self.ataque = ataque_Behavior
+        self.ataques = ataque_Behavior
 
     def attack(self, ataque, opponent):    
-        if ataque in self.ataque:
-            self.ataque[ataque].attack(opponent)
+        if ataque in self.ataques:
+            self.ataques[ataque].attack(opponent)
         else:
             print(f"{self.nombre} no conoce el ataque {ataque}.")
 
@@ -395,27 +395,113 @@ class Dos_Jugadores:
     def ejecutar(self):
         print("¡Comienza el juego!")
         while not self.hay_ganador():
-            self.turno_jugador()
+            self.turno_jugador1()
             if self.hay_ganador():
                 break
-            self.turno_maquina()
+            self.turno_jugador2()
         print("¡Fin del juego!")
 
     def turno_jugador1(self):
+        print("¡Es turno del Entrenador 1!")
+
+        # Mostrar los Pokémon disponibles para el jugador 1
+        print("Elija qué Pokémon va a utilizar en este turno:")
+        for i, pokemon in enumerate(self.pokemon_seleccionados_jugador1, 1):
+            print(f"{i}. {pokemon.nombre}")
+
+        # Obtener la selección del Pokémon
+        pokemon_seleccionado = None
+        while pokemon_seleccionado is None:
+            opcion_pokemon = input("Ingrese el número del Pokémon: ")
+            if opcion_pokemon.isdigit():
+                indice_pokemon = int(opcion_pokemon) - 1
+                if 0 <= indice_pokemon < len(self.pokemon_seleccionados_jugador1):
+                    pokemon_seleccionado = self.pokemon_seleccionados_jugador1[indice_pokemon]
+                else:
+                    print("Opción inválida. Ingrese un número dentro del rango.")
+            else:
+                print("Opción inválida. Ingrese un número válido.")
+
+        print(f"Ha elegido a {pokemon_seleccionado.nombre}.")
+
+        # Mostrar los ataques
+        print("El Pokémon tiene los siguientes ataques:")
+        for i, (nombre_ataque, ataque) in enumerate(pokemon_seleccionado.ataques.items(), 1):
+            print(f"{i}. {nombre_ataque}")
+
+        # Obtener la selección del ataque
+        ataque_seleccionado = None
+        while ataque_seleccionado is None:
+            opcion_ataque = input("Ingrese el número del ataque: ")
+            if opcion_ataque.isdigit():
+                indice_ataque = int(opcion_ataque) - 1
+                if 0 <= indice_ataque < len(pokemon_seleccionado.ataques):
+                    ataque_seleccionado = list(pokemon_seleccionado.ataques.values())[indice_ataque]
+                else:
+                    print("Opción inválida. Ingrese un número dentro del rango.")
+            else:
+                print("Opción inválida. Ingrese un número válido.")
+
+        print(f"Ha seleccionado el ataque {ataque_seleccionado}.")
+            # Obtener el Pokémon oponente (en este caso, el primer Pokémon del oponente)
+        pokemon_oponente = self.pokemon_seleccionados_jugador2[0]
+
+    # Realizar el ataque sobre el Pokémon oponente
+        pokemon_seleccionado.attack(ataque_seleccionado, pokemon_oponente)
+
+
+
         
-        print("¡Es tu turno!")
 
-        # Aquí deberías implementar la lógica del turno, como seleccionar un ataque, realizar el ataque, etc.
+    def turno_jugador2(self):
+        print("Turno del entrenador 2")
+        
+        # Mostrar los Pokémon disponibles para el jugador 2
+        print("Elija qué Pokémon va a utilizar en este turno:")
+        for i, pokemon in enumerate(self.pokemon_seleccionados_jugador2, 1):
+            print(f"{i}. {pokemon.nombre}")
+        
+        # Obtener la selección del Pokémon
+        pokemon_seleccionado = None
+        while pokemon_seleccionado is None:
+            opcion_pokemon = input("Ingrese el número del Pokémon: ")
+            if opcion_pokemon.isdigit():
+                indice_pokemon = int(opcion_pokemon) - 1
+                if 0 <= indice_pokemon < len(self.pokemon_seleccionados_jugador2):
+                    pokemon_seleccionado = self.pokemon_seleccionados_jugador2[indice_pokemon]
+                else:
+                    print("Opción inválida. Ingrese un número dentro del rango.")
+            else:
+                print("Opción inválida. Ingrese un número válido.")
+        
+        print(f"Ha elegido a {pokemon_seleccionado.nombre}.")
 
-    def turno_maquina2(self):
-        # Lógica del turno de la máquina
-        print("Turno de la máquina")
-        # Aquí deberías implementar la lógica del turno de la máquina, como seleccionar un ataque aleatorio, realizar el ataque, etc.
+        # Mostrar los ataques disponibles para el Pokémon seleccionado
+        print("El Pokémon tiene los siguientes ataques:")
+        for i, (nombre_ataque, ataque) in enumerate(pokemon_seleccionado.ataques.items(), 1):
+            print(f"{i}. {nombre_ataque}")
+        
+        # Obtener la selección del ataque
+        ataque_seleccionado = None
+        while ataque_seleccionado is None:
+            opcion_ataque = input("Ingrese el número del ataque: ")
+            if opcion_ataque.isdigit():
+                indice_ataque = int(opcion_ataque) - 1
+                if 0 <= indice_ataque < len(pokemon_seleccionado.ataques):
+                    ataque_seleccionado = list(pokemon_seleccionado.ataques.values())[indice_ataque]
+                else:
+                    print("Opción inválida. Ingrese un número dentro del rango.")
+            else:
+                print("Opción inválida. Ingrese un número válido.")
+        
+        print(f"Ha seleccionado el ataque {ataque_seleccionado}.")
+
+
 
     def hay_ganador(self):
         # Lógica para determinar si hay un ganador
         # Por ejemplo, si alguno de los jugadores se queda sin Pokémon, el otro jugador es el ganador
-        return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0
+        return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_jugador2) == 0
 
 
 class Maquina:
@@ -503,7 +589,6 @@ class juego:
             print("Elija un modo de juego válido.")
         
         if self.modo_juego:
-            self.modo_juego.seleccionar_pokemon()
             self.modo_juego.ejecutar()
     
    
