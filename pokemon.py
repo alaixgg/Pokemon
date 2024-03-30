@@ -332,29 +332,28 @@ class Dos_Jugadores:
         self.pokemon_seleccionados_jugador1 = []
         self.pokemon_seleccionados_jugador2 = []
 
-    def seleccionar_pokemon2(self):
+        print("***MODO DE JUEGO:*** \n VS 2 Entrenadores\n\n")
+
+        #Eleccion de Pokemons
         print("¡Entrenador 1, es tu turno de seleccionar tus Pokémones!")
-        pokemonsJugador1 = []
+        self.pokemon_seleccionados_jugador1 = []
         contador = 0
-        while contador < 3:
+        while contador != 3:
+            contador +=1
             pokemon_seleccionado = seleccionar_pokemon()
-            pokemonsJugador1.append(pokemon_seleccionado)
-            contador += 1
-        self.pokemon_seleccionados_jugador1 = pokemonsJugador1
-        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
+            self.pokemon_seleccionados_jugador1.append(pokemon_seleccionado)
+        print("El entrenador 1 ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador1])
 
-        print("¡Ahora tu, entrenador 2, es tu turno de seleccionar tus Pokémones!")
-        pokemonsJugador2 = []
+        print("¡Entrenador 2, es tu turno de seleccionar tus Pokémones!")
+        self.pokemon_seleccionados_jugador2 = []
         contador = 0
-        while contador == 3:
+        while contador != 3:
+            contador +=1
             pokemon_seleccionado = seleccionar_pokemon()
-            pokemonsJugador2.append(pokemon_seleccionado)
-            contador += 1
-        self.pokemon_seleccionados_jugador2 = pokemonsJugador2
-        
+            self.pokemon_seleccionados_jugador2.append(pokemon_seleccionado)
+        print("El entrenador 2 ha elegido los siguientes Pokémones:", [pokemon.nombre for pokemon in self.pokemon_seleccionados_jugador2])   
+   
 
-        print("El Entrenador 1 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador1)
-        print("El Entrenador 2 ha elegido los siguientes Pokémones:", self.pokemon_seleccionados_jugador2)
     
     def ejecutar(self):
         pass
@@ -363,7 +362,10 @@ class Maquina:
    def __init__(self):
         self.pokemon_seleccionados_jugador1 = []
         self.pokemon_seleccionados_maquina = []
+        
+        print("***MODO DE JUEGO:*** \nJugar contra un Botsito\n\n")
 
+        #Eleccion de Pokemons
         print("¡Entrenador, es tu turno de seleccionar tus Pokémones!")
         self.pokemon_seleccionados_jugador1 = []
         contador = 0
@@ -386,21 +388,16 @@ class Maquina:
         
     
    def ejecutar(self):
-        print("Modo de juego: Jugar contra un Botsito")
         print("¡Comienza el juego!")
-        # Ejemplo de lógica de juego contra la máquina
         while not self.hay_ganador():
-            # Lógica del turno del jugador
             self.turno_jugador()
             if self.hay_ganador():
                 break
-            # Lógica del turno de la máquina
             self.turno_maquina()
-        # Mostrar al ganador
         print("¡Fin del juego!")
 
    def turno_jugador(self):
-        # Lógica del turno del jugador
+        
         print("¡Es tu turno!")
         # Aquí deberías implementar la lógica del turno, como seleccionar un ataque, realizar el ataque, etc.
 
