@@ -500,8 +500,15 @@ class Dos_Jugadores:
 
     def hay_ganador(self):
         # Lógica para determinar si hay un ganador
-        # Por ejemplo, si alguno de los jugadores se queda sin Pokémon, el otro jugador es el ganador
+        if len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_jugador2) == 0:
+            if len(self.pokemon_seleccionados_jugador1) == 0:
+                print("¡Gana el entrenador 2!")
+            else: 
+                print("¡Gana el entrenador 1!")
+
         return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_jugador2) == 0
+    
+       
 
 
 class Maquina:
@@ -569,9 +576,16 @@ class Maquina:
         # Aquí deberías implementar la lógica del turno de la máquina, como seleccionar un ataque aleatorio, realizar el ataque, etc.
 
    def hay_ganador(self):
-        # Lógica para determinar si hay un ganador
-        # Por ejemplo, si alguno de los jugadores se queda sin Pokémon, el otro jugador es el ganador
+       
+        if len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0:
+            if len(self.pokemon_seleccionados_jugador1) == 0:
+                print("¡Gana el botsito Rocket!")
+            else: 
+                print("¡Gana el entrenador 1!")
+
         return len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0
+    
+        
 
 
     #Funcion de seleccion del modo de juego
