@@ -5,152 +5,142 @@ class ataque_Behavior:
     def attack(self):
         pass
 #Se implementan las clases de los ataques
-        
+#Fuentes de la cantidad de daño https://bulbapedia.bulbagarden.net/wiki/List_of_moves
 class Impactrueno(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Impactrueno!")
-        opponent.reduce_health(20)
+        opponent.reduce_salud(60)
 
 class Rayo (ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Rayo!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(10)
 
 class Ataque_Rapido(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Ataque Rapido!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Placaje(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Impactrueno!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(30)
 
 class Lanzallamas(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Lanzallamas !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(50)
 
 class Gruñido(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Gruñido !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(20)
 
 class Arañazo(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Arañazo!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(30)
 
 class Ascuas(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Ascuas!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(45)
 
 
 class Burbuja(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Burbuja!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(20)
 
 class Rayo_Burbuja (ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Rayo Burbuja !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
     
 class Drenadoras(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Drenadoras!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Tacleada(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Tacleada !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Supersonico(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Supersonico !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(20)
 
 class Picotazo(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Picotazo!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(35)
 
 class Remolino(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Remolino!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(60)
     
 class Tornado(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Tornado !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(60)
 
 class Latigo_Cepa(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Latigo Cepa!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(35)
     
 class Somnifero(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Somnifero !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(20)
 
 class Pistola_agua(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Pistola de agua!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(20)
 
 class Hidropulso(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Hidropulso !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
     
 class Tajo_Cruzado(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Tajo Cruzado !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Hipercolmillo(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Hipercolmillo !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(80)
 
 class Golpe_Cabeza(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Golpe cabeza !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(70)
     
 class Lodo(ataque_Behavior):
     def attack(self,opponent):
         print("¡Uso Lodo !")
-        opponent.reduce_health(10)
-
-class Golpe_cabeza (ataque_Behavior):
-    def attack(self,opponent):
-        print("¡Usó golpe Cabeza!")
-        opponent.reduce_health(10)
-
-class lodo(ataque_Behavior):
-    def attack(self,opponent):
-        print("¡Usó lodo!")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Bomba_lodo(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Bomba Lodo!")
-        opponent.reduce_health(10) 
+        opponent.reduce_salud(80) 
 
 class Ataque_acido(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Ataque Acido !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
 
 class Infortunio(ataque_Behavior):
     def attack(self,opponent):
         print("¡Usó Infortunio !")
-        opponent.reduce_health(10)
+        opponent.reduce_salud(40)
         
 """class (ataque_Behavior):
     def attack(self,opponent):
@@ -178,7 +168,7 @@ class Pokemon:
 
 
 #Clases de pokemons
-        
+#Fuentes puntos de salud https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon
 class Pikachu(Pokemon):
     def __init__(self):
         super().__init__("Pikachu", 100, ataque_Behavior())  
@@ -191,7 +181,7 @@ class Pikachu(Pokemon):
 
 class Caterpie(Pokemon):
     def __init__(self):
-        super().__init__("Caterpie", 100, ataque_Behavior())
+        super().__init__("Caterpie", 50, ataque_Behavior())
         self.ataques = {
             "Placaje": Placaje(),
             "Tacleada": Tacleada(),
@@ -213,7 +203,7 @@ class Pidgeotto(Pokemon):
 
 class Bulbasaur(Pokemon):
     def __init__(self):
-        super().__init__("Bulbasaur", 100, ataque_Behavior())
+        super().__init__("Bulbasaur", 120, ataque_Behavior())
         self.ataques = {
             "Látigo Cepa": Latigo_Cepa(),
             "Drenadoras": Drenadoras(),
@@ -223,7 +213,7 @@ class Bulbasaur(Pokemon):
 
 class Charmander(Pokemon):
     def __init__(self):
-        super().__init__("Charmander", 100, ataque_Behavior())
+        super().__init__("Charmander", 80, ataque_Behavior())
         self.ataques = {
             "Lanzallamas": Lanzallamas(),
             "Gruñido": Gruñido(),
@@ -233,7 +223,7 @@ class Charmander(Pokemon):
 
 class Squirtle(Pokemon):
     def __init__(self):
-        super().__init__("Squirtle", 100, ataque_Behavior())
+        super().__init__("Squirtle", 90, ataque_Behavior())
         self.ataques = {
             "Pistola Agua": Pistola_agua(),
             "Burbuja": Burbuja(),
@@ -243,7 +233,7 @@ class Squirtle(Pokemon):
 
 class Krabby(Pokemon):
     def __init__(self):
-        super().__init__("Krabby", 100, ataque_Behavior())
+        super().__init__("Krabby", 50, ataque_Behavior())
         self.ataques = {
             "Burbuja": Burbuja(),
             "Rayo Burbuja": Rayo_Burbuja(),
@@ -253,7 +243,7 @@ class Krabby(Pokemon):
 
 class Raticate(Pokemon):
     def __init__(self):
-        super().__init__("Raticate", 100, ataque_Behavior())
+        super().__init__("Raticate", 80, ataque_Behavior())
         self.ataques = {
             "Hipercolmillo": Hipercolmillo(),
             "Ataque Rápido": Ataque_Rapido(),
@@ -273,7 +263,7 @@ class Muk(Pokemon):
 
 class Kingler(Pokemon):
     def __init__(self):
-        super().__init__("Kingler", 100, ataque_Behavior)
+        super().__init__("Kingler", 110, ataque_Behavior)
         self.ataques = {
             "Hidropulso": Hidropulso(),
             "Rayo Burbuja": Rayo_Burbuja(),
@@ -495,6 +485,7 @@ class Dos_Jugadores:
                 print("Opción inválida. Ingrese un número válido.")
         
         print(f"Ha seleccionado el ataque {ataque_seleccionado}.")
+
 
 
 
