@@ -382,8 +382,8 @@ class Dos_Jugadores:
             break  # Salir después del primer ataque
 
     def hay_ganador(self):
-        # Verificar si hay un ganador
-        if all(pokemon.salud <= 0 for pokemon in self.pokemon_seleccionados_jugador1):
+        
+        if all(pokemon.salud == 0 for pokemon in self.pokemon_seleccionados_jugador1):
             print("¡El Jugador 2 ha ganado!")
             return True
         elif all(pokemon.salud <= 0 for pokemon in self.pokemon_seleccionados_jugador2):
@@ -391,7 +391,6 @@ class Dos_Jugadores:
             return True
         return False
        
-
 
 class Maquina:
     def __init__(self):
@@ -467,7 +466,6 @@ class Maquina:
             break  # Salir después del primer ataque
 
     def turno_maquina(self, atacantes, oponentes):
-        time.sleep(2)
         print(f"\nTurno del Botsito Rocket:")
         for pokemon in atacantes:
             if pokemon.salud <= 0:
@@ -475,14 +473,16 @@ class Maquina:
                 continue
             print(f"\nEs el turno de {pokemon.nombre}.")
             # Seleccionar un ataque aleatorio
-            time.sleep(1)
             ataque = random.choice(list(pokemon.ataques.keys()))
             objetivo = oponentes[-1] if oponentes[-1].salud > 0 else oponentes[0]
+            if objetivo.salud <= 0:
+                print(f"{objetivo.nombre} no puede ser atacado. Ha sido derrotado.")
+                continue
             pokemon.attack(ataque, objetivo)
             break  # Salir después del primer ataque
 
     def hay_ganador(self):
-        if len(self.pokemon_seleccionados_jugador1) <= 0 or len(self.pokemon_seleccionados_maquina) <= 0:
+        if len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0:
             if len(self.pokemon_seleccionados_jugador1) == 0:
                 print("¡Gana el Botsito Rocket!")
             else: 
