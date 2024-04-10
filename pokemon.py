@@ -445,11 +445,14 @@ class Maquina:
 
     def ejecutar(self):
         print("¡Comienza el juego!")
+        turno = 1
         while not self.hay_ganador():
-            self.turno_jugador(self.pokemon_seleccionados_jugador1, self.pokemon_seleccionados_maquina)
-            if self.hay_ganador():
-                break
-            self.turno_maquina(self.pokemon_seleccionados_maquina, self.pokemon_seleccionados_jugador1)
+            if turno == 1:
+                self.turno_jugador(self.pokemon_seleccionados_jugador1, self.pokemon_seleccionados_maquina)
+                turno = 2
+            else:
+                self.turno_maquina(self.pokemon_seleccionados_maquina, self.pokemon_seleccionados_jugador1)
+                turno = 1
         print("¡Fin del juego!")
 
     def turno_jugador(self, atacantes, oponentes):
@@ -459,6 +462,7 @@ class Maquina:
                 print(f"{pokemon.nombre} no puede atacar. Ha sido derrotado.")
                 continue
             print(f"\nEs el turno de {pokemon.nombre}.")
+            time.sleep(0.2)
             pokemon.mostrar_ataques_disponibles()
             print("(Escriba el nombre del ataque)")
             ataque_elegido = input(f"Elige un ataque para {pokemon.nombre}: ")
@@ -482,15 +486,15 @@ class Maquina:
             break  # Salir después del primer ataque
 
     def hay_ganador(self):
-        if len(self.pokemon_seleccionados_jugador1) == 0 or len(self.pokemon_seleccionados_maquina) == 0:
-            if len(self.pokemon_seleccionados_jugador1) == 0:
-                print("¡Gana el Botsito Rocket!")
-            else: 
-                print("¡Gana el Entrenador 1!")
-
+        
+        if all(pokemon.salud <= 0 for pokemon in self.pokemon_seleccionados_jugador1):
+            print("¡El Jugador 2 ha ganado!")
             return True
-
+        elif all(pokemon.salud <= 0 for pokemon in self.pokemon_seleccionados_maquina):
+            print("¡El Jugador 1 ha ganado!")
+            return True
         return False
+    
     #Funcion de seleccion del modo de juego
 class juego:
     def __init__(self):
